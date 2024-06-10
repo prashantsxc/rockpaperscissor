@@ -1,0 +1,69 @@
+body {
+    background-color: black;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; 
+}
+
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+
+}
+
+.header {
+    display: flex;
+    background-color: #1F2937;
+    color: whitesmoke;
+    justify-content: center;
+    height: 100px;
+}
+
+.optionstoremain {
+    display: flex;
+    padding:20px;
+    flex: 1;
+    background-color: oldlace;
+    flex-direction: column;
+} 
+
+.userprompt {
+    text-align: center;
+}
+
+.optionstoresub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.imager {
+    width: 200px;
+    height:200px;
+}
+
+.results {
+    padding-left: 220px;
+}
+
+.output {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+}
+
+
+
+.footer {
+    display: flex;
+    background-color: #1F2937;
+    color: whitesmoke;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
