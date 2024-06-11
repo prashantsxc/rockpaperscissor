@@ -6,18 +6,18 @@ let draw=0;
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
-    let userinput='';
+    let userInput='';
     if (button.classList.contains('rock')) {
-        userinput='rock';
+        userInput='rock';
     }
     else if (button.classList.contains('paper')) {
-        userinput='paper';
+        userInput='paper';
     }
     else {
-        userinput='scissor';
+        userInput='scissor';
     }
-   let compinput=generatecomputerinput();
-   outcome=playgame(userinput,compinput);
+   let compInput=generateComputerInput();
+   outcome=playGame(userInput,compInput);
 
     if (outcome ==='win') {
         win++;
@@ -29,23 +29,23 @@ buttons.forEach(button => {
         draw++;
     }
 
-    updatecontent (outcome,win,loss,draw);
+    updateContent (outcome,win,loss,draw);
 
   });
 });
 
-function generatecomputerinput () {
+function generateComputerInput () {
     let choices=['rock','paper','scissor'];
     const randomIndex = Math.floor(Math.random() * choices.length);
-    let genoutput=choices[randomIndex];
+    let genOutput=choices[randomIndex];
 
     const computerImage = document.querySelector(".outputimg");
 
-    const rockPath=`./images/${genoutput}.jpg`; 
-    const paperPath=`./images/${genoutput}.png`; 
-    const scissorPath=`./images/${genoutput}.png`; 
+    const rockPath=`./images/${genOutput}.jpg`; 
+    const paperPath=`./images/${genOutput}.png`; 
+    const scissorPath=`./images/${genOutput}.png`; 
 
-    switch (genoutput) {
+    switch (genOutput) {
         case 'rock':
             imagePath=rockPath;
             break;
@@ -60,20 +60,20 @@ function generatecomputerinput () {
 
     computerImage.setAttribute("src", imagePath);
 
-    return genoutput;
+    return genOutput;
 
 }
 
-function playgame (userinput,compinput) {
+function playGame (userInput,compInput) {
     let outcome ='';
-    if (userinput===compinput) {
+    if (userInput===compInput) {
         outcome='draw';
     }
     else {
         if (
-             (userinput==='rock' && compinput=='scissor') ||
-                (userinput==='paper' && compinput=='rock') ||
-                    (userinput==='scissor' && compinput=='paper')) {
+             (userInput==='rock' && compInput==='scissor') ||
+                (userInput==='paper' && compInput==='rock') ||
+                    (userInput==='scissor' && compInput==='paper')) {
                         outcome='win';
                     }
                     else {
@@ -85,11 +85,11 @@ function playgame (userinput,compinput) {
 }
 
 
-function updatecontent(outcome,win,loss,draw) {
+function updateContent(outcome,win,loss,draw) {
     const aggregator = document.querySelector(".outputbox");
-    const currentoutcome = document.querySelector(".currentoutcome");
+    const currentOutcome = document.querySelector(".currentoutcome");
 
 
-    currentoutcome.textContent = `${outcome}!`;
+    currentOutcome.textContent = `${outcome}!`;
     aggregator.textContent= `Wins: ${win}, Losses: ${loss}, Draws: ${draw}`;
 }
