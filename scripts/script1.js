@@ -3,10 +3,18 @@ const buttons = document.querySelectorAll(".inputbtn");
 let win=0;
 let loss=0;
 let draw=0;
+let gameEnd=0;
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
     let userInput='';
+
+   if (gameEnd===1 ) {
+        win=0;
+        loss=0;
+        draw=0;
+   }
+
     if (button.classList.contains('rock')) {
         userInput='rock';
     }
@@ -29,8 +37,10 @@ buttons.forEach(button => {
         draw++;
     }
 
-    updateContent (outcome,win,loss,draw);
+   updateContent (outcome,win,loss,draw);
+   gameEnd=declareWinner(win,loss);
 
+   
   });
 });
 
@@ -88,8 +98,26 @@ function playGame (userInput,compInput) {
 function updateContent(outcome,win,loss,draw) {
     const aggregator = document.querySelector(".outputbox");
     const currentOutcome = document.querySelector(".currentoutcome");
-
+    const resultOfGame=document.querySelector(".resultOfGame");
 
     currentOutcome.textContent = `${outcome}!`;
     aggregator.textContent= `Wins: ${win}, Losses: ${loss}, Draws: ${draw}`;
+   
+}
+
+
+function declareWinner (win,loss) {
+    const aggregator = document.querySelector(".outputbox");
+    
+    if (win===5) {
+        aggregator.textContent="User Wins by winning 5 games";
+        return 1 ;
+    } 
+    else if  (loss===5 ) {
+        aggregator.textContent="Computer Wins by winning 5 games";
+        return 1;
+    }
+    else {
+        return 0;
+    }
 }
